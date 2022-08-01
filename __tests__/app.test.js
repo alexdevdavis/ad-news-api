@@ -20,8 +20,8 @@ describe("GET /api/topics", () => {
     return request(app)
       .get("/api/toppics")
       .expect(404)
-      .then(({ message }) => {
-        expect(message).toBe("not found");
+      .then(({ body }) => {
+        expect(body.msg).toBe("not found");
       });
   });
 });
