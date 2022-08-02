@@ -53,4 +53,12 @@ describe("GET /api/articles/:article_id", () => {
         expect(body.msg).toBe("Bad Request");
       });
   });
+  test("404: returns an error when passed a non-existent article_id", () => {
+    return request(app)
+      .get("/api/articles/440404")
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Not Found")
+      });
+  });
 });

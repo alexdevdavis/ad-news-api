@@ -8,5 +8,8 @@ exports.fetchArticle = async (id) => {
     `SELECT * FROM articles WHERE article_id = $1`,
     [id]
   );
+  if (article.length < 1) {
+    return Promise.reject({ status: 404 });
+  }
   return article[0];
 };
